@@ -27,8 +27,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           chmod +x .bin/format.sh
-          yarn lint
-          git ls-files | xargs pre-commit run --files
+          pre-commit run -a -v
   commitlint:
     runs-on: ubuntu-latest
     steps:
