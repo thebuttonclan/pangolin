@@ -7,9 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v3
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
+      - uses: actions/cache@v2
+        id: asdf-cache
         with:
-          python-version: 3.x
+          path: |
+            /home/runner/.asdf
+          key: ${{ runner.os }}-asdf-${{ hashFiles('**/.tool-versions') }}
+      - name: Install asdf tools
+        run: |
+          cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
+          asdf plugin-update --all
+          bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+          asdf install
+          asdf reshim
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
