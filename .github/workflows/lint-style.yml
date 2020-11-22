@@ -41,7 +41,7 @@ jobs:
           asdf reshim
           chmod +x .bin/format.sh
           pre-commit run -a -v
-          yarn eslint
+          yarn lint
   commitlint:
     runs-on: ubuntu-latest
     steps:
