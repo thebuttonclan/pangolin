@@ -12,11 +12,6 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v0.12.7
-    hooks:
-      - id: detect-secrets
-        args: ['--baseline', '.secrets.baseline']
   - repo: local
     hooks:
       - id: eslint-prettier
@@ -24,6 +19,11 @@ repos:
         language: script
         files: \.(j|t)sx?$
         entry: ./.bin/format.sh
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v0.12.7
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.12.0
     hooks:
