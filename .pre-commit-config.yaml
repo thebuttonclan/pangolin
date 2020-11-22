@@ -22,7 +22,7 @@ repos:
       - id: eslint-prettier
         name: Lint and Style
         language: script
-        # files: \.(j|t)sx?$
+        files: \.(j|t)sx?$
         entry: ./.bin/format.sh
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.12.0

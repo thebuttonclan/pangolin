@@ -40,6 +40,8 @@ jobs:
           pip install -r requirements.txt
           asdf reshim
           chmod +x .bin/format.sh
+          pre-commit --version
+          which pre-commit
           pre-commit run -a -v
   commitlint:
     runs-on: ubuntu-latest
