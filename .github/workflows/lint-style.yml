@@ -38,6 +38,7 @@ jobs:
       - name: Rerun Pre-Commit Hooks on CI
         run: |
           pip install -r requirements.txt
+          asdf reshim
           chmod +x .bin/format.sh
           pre-commit run -a -v
   commitlint:
